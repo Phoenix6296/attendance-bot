@@ -14,3 +14,15 @@
   font-weight: 600;
   src: local(""), url("../public/fonts/Figtree-SemiBold.ttf") format("truetype");
 }
+
+.desktop-view {
+  width: calc(100%);
+}
+
+* {
+  font-family: "Figtree-Regular", Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+}

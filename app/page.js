@@ -1,9 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Input } from "@/components/common/Input";
 import { Button } from "@/components/common/Button";
+import toast from "react-hot-toast";
 
 /* eslint-disable @next/next/no-img-element */
 export default function Login() {
@@ -11,6 +12,29 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (window !== undefined) {
+      if (window?.localStorage?.getItem("USER")) {
+        router.push("/attendance");
+      }
+    }
+  }, []);
+
+  const handleLogin = (email, password) => {
+    setLoading(true);
+    if (email === "admin@hit.ac.in" && password === "admin") {
+      const o = {
+        name: "Admin",
+        email: email,
+      };
+      window.localStorage.setItem("USER", JSON.stringify(o));
+      router.push("/attendance");
+    } else {
+      toast.error("Invalid Credentials");
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="h-screen w-full flex bg-white">
@@ -24,6 +48,7 @@ export default function Login() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
+                handleLogin(email, password);
               }}
             >
               <Input
@@ -51,9 +76,6 @@ export default function Login() {
                 loading={loading}
                 color="bg-primary text-white"
                 title={"Login"}
-                onClick={() => {
-                  window?.webengage?.track(WEBENGAGE_OBJ.LOGIN, {});
-                }}
               />
             </form>
           </div>

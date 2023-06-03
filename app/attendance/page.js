@@ -1,5 +1,5 @@
+"use client";
+import Layout from "@/components/Layout";
 export default function Attendace() {
-  return <div className="w-full h-screen">
-    
-  </div>;
+  return <Layout>hello</Layout>;
 }
