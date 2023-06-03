@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        ftRegular: ["Figtree-Regular", "serif"],
+        ftMedium: ["Figtree-Medium", "serif"],
+      },
       colors: {
         primary: "#0E6FFF",
         primaryFade: "#EDF4FF",

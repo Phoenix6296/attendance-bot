@@ -1,3 +1,5 @@
 export default function Attendace() {
-  return <div className="bg-black text-white w-full h-screen">hello</div>;
+  return <div className="w-full h-screen">
+    
+  </div>;
 }
