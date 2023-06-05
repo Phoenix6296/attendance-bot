@@ -49,7 +49,7 @@ export default function Attendance() {
 
   return (
     <Layout>
-      <div className="flex flex-col p-10 gap-5">
+      <div className="flex flex-col lg:p-10 p-5 gap-5">
         <div
           style={{ boxShadow: `0 0 10px 5px ${boxShadow}` }}
           className={`w-full rounded-xl overflow-hidden shadow-lg transition-all duration-500 ease-in-out`}

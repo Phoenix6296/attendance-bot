@@ -41,7 +41,7 @@ export default function Register() {
 
   return (
     <Layout>
-      <div className="p-10">
+      <div className="lg:p-10 p-5">
         <h1 className="text-3xl text-grayDarker lg:mb-0 mb-10">
           Register the User
         </h1>
