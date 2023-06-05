@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
 import axios from "axios";
 import { ACCESS_TOKEN_KEY } from "../constants";
+import { BASE_URL } from "../constants";
 
 const checkStatus = (status) => status >= 200 && status < 300;
-export const baseUrl = "";
 
 const client = axios.create({
-  baseURL: baseUrl,
+  baseURL: BASE_URL,
   headers: {
     Accept: "*/*",
     "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export const getData = async (endpoint) => {
     if (error?.response?.status == 401) {
       if (window.localStorage.getItem(REFRESH_TOKEN_KEY)) {
         const re = await axios.get("/refreshToken", {
-          baseURL: baseUrl,
+          baseURL: BASE_URL,
           headers: {
             Authorization: `bearer ${window.localStorage.getItem(
               REFRESH_TOKEN_KEY
@@ -83,7 +83,7 @@ export const postData = async (endpoint, payload) => {
     if (error?.response?.status == 401) {
       if (window.localStorage.getItem(REFRESH_TOKEN_KEY)) {
         const re = await axios.get("/refreshToken", {
-          baseURL: baseUrl,
+          baseURL: BASE_URL,
           headers: {
             Authorization: `bearer ${window.localStorage.getItem(
               REFRESH_TOKEN_KEY
@@ -116,7 +116,7 @@ export const patchData = async (endpoint, payload) => {
     if (error?.response?.status == 401) {
       if (window.localStorage.getItem(REFRESH_TOKEN_KEY)) {
         const re = await axios.get("/refreshToken", {
-          baseURL: baseUrl,
+          baseURL: BASE_URL,
           headers: {
             Authorization: `bearer ${window.localStorage.getItem(
               REFRESH_TOKEN_KEY
@@ -149,7 +149,7 @@ export const putData = async (endpoint, payload) => {
     if (error?.response?.status == 401) {
       if (window.localStorage.getItem(REFRESH_TOKEN_KEY)) {
         const re = await axios.get("/refreshToken", {
-          baseURL: baseUrl,
+          baseURL: BASE_URL,
           headers: {
             Authorization: `bearer ${window.localStorage.getItem(
               REFRESH_TOKEN_KEY
@@ -184,7 +184,7 @@ export const deleteData = async (endpoint, payload) => {
     if (error?.response?.status == 401) {
       if (window.localStorage.getItem(REFRESH_TOKEN_KEY)) {
         const re = await axios.get("/refreshToken", {
-          baseURL: baseUrl,
+          baseURL: BASE_URL,
           headers: {
             Authorization: `bearer ${window.localStorage.getItem(
               REFRESH_TOKEN_KEY

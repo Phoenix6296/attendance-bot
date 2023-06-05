@@ -2,10 +2,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Modal from "./Modal";
+import Dropdown from "./Dropdown";
 
 export const Navbar = () => {
   const [profile, setProfile] = useState({});
   const [showPop, setPop] = useState(false);
+  const [showDropdown, setDropdown] = useState(false);
 
   useEffect(() => {
     if (window !== undefined) {
@@ -16,12 +19,19 @@ export const Navbar = () => {
   return (
     <>
       <div className="px-5 py-4 lg:py-0 lg:pt-8 lg:pb-4 flex items-center justify-between bg-white relative shadow-sm">
-        <Link href="/attendance">
-          <div className="flex items-center gap-2">
-            <Image src={"/common/logo.png"} height={40} width={40} alt="logo" />
-            <h1 className="font-ftMedium text-grayDarker">Attendance System</h1>
-          </div>
-        </Link>
+        <div
+          className="flex items-center gap-2 bg-[#ECF4FF] p-2 rounded-full cursor-pointer border"
+          onClick={() => setDropdown(!showDropdown)}
+        >
+          <Image src={"/common/logo.png"} height={30} width={30} alt="logo" />
+          <Image
+            src={"/common/down-arrow.png"}
+            height={8}
+            width={8}
+            alt="logo"
+            className={`transform ${showDropdown ? "rotate-180" : ""}`}
+          />
+        </div>
         <div className="flex gap-4">
           <div className="flex gap-3 items-center relative">
             <button
@@ -73,6 +83,9 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
+      <Modal isVisible={showDropdown} onClose={setDropdown}>
+        <Dropdown setShow={setDropdown} _className="lg:hidden left-5" />
+      </Modal>
     </>
   );
 };

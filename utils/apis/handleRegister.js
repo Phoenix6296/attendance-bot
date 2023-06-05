@@ -5,30 +5,32 @@ import { toast } from "react-hot-toast";
 export const handleRegister = async (
   listOfImages,
   setListOfImage,
+  name,
+  setName,
   setLoading
 ) => {
+  setLoading(true);
   try {
-    setLoading(true);
     const data = new FormData();
+    listOfImages.forEach((image, index) => {
+      data.append(`img${index}`, image);
+    });
+    data.append("name", name);
     let config = {
       method: "post",
       url: `${BASE_URL}/register`,
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+      headers: { "Content-Type": "multipart/form-data" },
       data: data,
     };
-    listOfImages.forEach((image, index) => {
-      data.append(`file${index}`, image);
-    });
     const response = await axios(config);
-    if (response.status == 200 || response.status == 201) {
-      toast.success("User Registered Successfully");
+    if (response.status === 200 || response.status === 201) {
+      toast.success(response?.message || "Successfully Registered");
       setLoading(false);
+      setName("");
       setListOfImage([]);
     } else {
       setLoading(false);
-      toast.error("Something went wrong");
+      toast.error(response?.message || "Something went wrong");
     }
   } catch (e) {
     console.log(e);

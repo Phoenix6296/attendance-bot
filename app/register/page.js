@@ -4,6 +4,7 @@ import Webcam from "react-webcam";
 import Layout from "../../components/Layout";
 import { Button } from "@/components/common/Button";
 import { handleRegister } from "@/utils/apis/handleRegister";
+import { Input } from "@/components/common/Input";
 
 export default function Register() {
   const videoConstraints = {
@@ -27,11 +28,14 @@ export default function Register() {
 
   const resetCapture = useCallback(() => {
     setListOfImage([]);
+    setName("");
   }, []);
+
+  const [name, setName] = useState("");
 
   useEffect(() => {
     if (listOfImage.length === 5) {
-      handleRegister(listOfImage, setListOfImage, setLoading);
+      handleRegister(listOfImage, setListOfImage, name, setName, setLoading);
     }
   }, [listOfImage]);
 
@@ -51,12 +55,20 @@ export default function Register() {
                 videoConstraints={videoConstraints}
               />
             </div>
+            <div className="w-full">
+              <Input
+                placeholder={"Enter your name"}
+                required={true}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
             <Button
               title={"Capture"}
               onClick={capture}
               className={"bg-primary text-white"}
-              disabled={listOfImage.length >= 5}
-              setLoading={loading}
+              disabled={listOfImage.length >= 5 || name.length <= 3}
+              loading={loading}
             />
           </div>
           <div className="flex items-center justify-center w-full overflow-scroll gap-5">
