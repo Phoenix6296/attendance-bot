@@ -11,7 +11,7 @@ export default function Layout({ children }) {
         router.push("/");
       }
     }
-  }, []);
+  }, [router]);
 
   return (
     <div className="w-full">

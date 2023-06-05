@@ -22,17 +22,9 @@ export const Input = ({
   focusStyles,
   reference,
   onInvalid,
-  showTooltip,
-  message,
-  countryCode,
-  setCountryCode,
-  isCountry,
   onPaste,
   isShowPassword,
-  isShowForgotPassword,
-  bgColor,
   style,
-  onClick,
 }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -51,19 +43,8 @@ export const Input = ({
             {label}
           </label>
         </div>
-        {showTooltip ? (
-          <Tooltip top={"-top-20"} left="left-5" message={message} />
-        ) : null}
       </div>
       <div className="flex items-center mt-2 gap-1 relative">
-        {isCountry ? (
-          <CountryCodeDropdown
-            value={countryCode}
-            setValue={setCountryCode}
-            bgColor={bgColor}
-            onClick={onClick}
-          />
-        ) : null}
         <input
           onInvalid={onInvalid}
           ref={reference}

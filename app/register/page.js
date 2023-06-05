@@ -61,7 +61,7 @@ export default function Register() {
           </div>
           <div className="flex items-center justify-center w-full overflow-scroll gap-5">
             {[...Array(5)].map((_, index) => (
-              <div className="w-52 h-40 rounded-lg overflow-hidden">
+              <div className="w-52 h-40 rounded-lg overflow-hidden" key={index}>
                 {listOfImage[index] ? (
                   <img
                     src={listOfImage[index]}

@@ -19,7 +19,7 @@ export default function Login() {
         router.push("/register");
       }
     }
-  }, []);
+  }, [router]);
 
   const handleLogin = (email, password) => {
     setLoading(true);
