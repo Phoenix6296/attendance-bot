@@ -19,7 +19,7 @@ export const Navbar = () => {
         <Link href="/attendance">
           <div className="flex items-center gap-2">
             <Image src={"/common/logo.png"} height={40} width={40} alt="logo" />
-            <h1 className="font-ftMedium">Attendance System</h1>
+            <h1 className="font-ftMedium text-grayDarker">Attendance System</h1>
           </div>
         </Link>
         <div className="flex gap-4">
@@ -56,7 +56,7 @@ export const Navbar = () => {
                     router.push("/");
                   }}
                 >
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 swing-in-top-fwd">
                     <Image
                       src={"/common/logout.svg"}
                       alt="logout"

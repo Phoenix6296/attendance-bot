@@ -16,20 +16,20 @@ export default function Login() {
   useEffect(() => {
     if (window !== undefined) {
       if (window?.localStorage?.getItem("USER")) {
-        router.push("/attendance");
+        router.push("/register");
       }
     }
   }, []);
 
   const handleLogin = (email, password) => {
     setLoading(true);
-    if (email === "admin@hit.ac.in" && password === "admin") {
+    if (email === "admin@gmail.com" && password === "admin") {
       const o = {
         name: "Admin",
         email: email,
       };
       window.localStorage.setItem("USER", JSON.stringify(o));
-      router.push("/attendance");
+      router.push("/register");
     } else {
       toast.error("Invalid Credentials");
       setLoading(false);

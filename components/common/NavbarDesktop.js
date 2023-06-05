@@ -17,10 +17,10 @@ export const NavbarDesktop = () => {
 
   return (
     <div className="bg-white flex items-center px-4 py-5 justify-between sticky top-0 z-50 shadow-sm">
-      <Link href="/attendance">
+      <Link href="/register">
         <div className="flex items-center gap-2">
           <Image src={"/common/logo.png"} height={40} width={40} alt="logo" />
-          <h1 className="font-ftMedium">Attendance System</h1>
+          <h1 className="font-ftMedium text-grayDarker">Attendance System</h1>
         </div>
       </Link>
       <div className="flex items-center gap-4 text-sm">
@@ -42,7 +42,7 @@ export const NavbarDesktop = () => {
                 window?.localStorage.clear();
                 router.push("/");
               }}
-              className="px-4 py-3 rounded-lg text-red absolute bg-white border border-black border-opacity-10 left-0 top-12 w-full flex gap-4"
+              className="swing-in-top-fwd px-4 py-3 rounded-lg text-red absolute bg-white border border-black border-opacity-10 left-0 top-12 w-full flex gap-4"
             >
               <Image
                 src={"/common/logout.svg"}
