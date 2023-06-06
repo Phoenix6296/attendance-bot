@@ -29,21 +29,8 @@ export default function Attendance() {
   const [boxShadow, setBoxShadow] = useState(null);
 
   useEffect(() => {
-    if (loading) {
-      setBoxShadow("rgba(255, 255, 0, 0.5)");
-    }
-    if (data) {
-      if (data === "Face not found in database.") {
-        setBoxShadow("rgba(255, 0, 0, 0.5)");
-      } else {
-        setBoxShadow("rgba(0, 255, 0, 0.5)");
-      }
-    }
-  }, [data, loading]);
-
-  useEffect(() => {
     if (image) {
-      handleFaceRecognition(image, setData, setLoading);
+      handleFaceRecognition(image, setData, setBoxShadow, setLoading);
     }
   }, [image]);
 
@@ -68,6 +55,7 @@ export default function Attendance() {
           onClick={capture}
           loading={loading}
         />
+        <p className="w-full text-center">{data}</p>
       </div>
     </Layout>
   );

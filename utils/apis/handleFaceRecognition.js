@@ -2,9 +2,15 @@ import axios from "axios";
 import { BASE_URL } from "../constants";
 import { toast } from "react-hot-toast";
 
-export const handleFaceRecognition = async (image, setData, setLoading) => {
+export const handleFaceRecognition = async (
+  image,
+  setData,
+  setBoxShadow,
+  setLoading
+) => {
   try {
     setLoading(true);
+    setBoxShadow("rgba(255, 255, 0, 0.5)");
     const data = new FormData();
     data.append("img", image);
     let config = {
@@ -15,20 +21,15 @@ export const handleFaceRecognition = async (image, setData, setLoading) => {
     };
     const response = await axios(config);
     if (response.status === 200 || response.status === 201) {
+      setBoxShadow("rgba(0, 255, 0, 0.5)");
       toast.success(response?.message || "Successfully Registered");
       setData(response?.data?.name);
       setLoading(false);
-    } else {
-      setLoading(false);
-      toast.error(response?.data?.message || "Something went wrong");
     }
   } catch (e) {
-    console.log(e);
-    toast.error(
-      e?.response?.data?.message?.length > 100
-        ? "Unable to Process"
-        : e?.response?.data?.message || "Something went wrong"
-    );
+    setBoxShadow("rgba(255, 0, 0, 0.5)");
+    console.log(e?.response?.data?.message);
+    setData(e?.response?.data?.message);
     setLoading(false);
   }
 };
